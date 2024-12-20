@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -7,13 +7,13 @@
     <script>
         function calculateFee() {
             // 获取用户输入的各项数值
-            let sponser = document.getElementById('sponser').value === 'Yes' ? 1 : 0;
-            let phase = parseFloat(document.getElementById('phase').value);
-            let registrationClassification = parseFloat(document.getElementById('registrationClassification').value);
-            let type = parseFloat(document.getElementById('type').value);
-            let methodOfAdministration = parseFloat(document.getElementById('methodOfAdministration').value);
+            let sponser = parseInt(document.getElementById('sponser').value);
+            let phase = parseInt(document.getElementById('phase').value);
+            let registrationClassification = parseInt(document.getElementById('registrationClassification').value);
+            let type = parseInt(document.getElementById('type').value);
+            let methodOfAdministration = parseInt(document.getElementById('methodOfAdministration').value);
             let noOfBloodCollection = parseFloat(document.getElementById('noOfBloodCollection').value);
-            let biopsyPuncture = document.getElementById('biopsyPuncture').value === 'Yes' ? 1 : 0;
+            let biopsyPuncture = parseInt(document.getElementById('biopsyPuncture').value);
             let visit = parseFloat(document.getElementById('visit').value);
             let lengthOfStay = parseFloat(document.getElementById('lengthOfStay').value);
 
@@ -44,29 +44,48 @@
     <form>
         <label for="sponser">Sponsor：</label>
         <select id="sponser" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="1">State-owned company</option>
+            <option value="2">Overseas-funded enterprise</option>
         </select><br>
 
         <label for="phase">Phase：</label>
-        <input type="number" id="phase" required><br>
+        <select id="phase" required>
+            <option value="1">Ⅰ</option>
+            <option value="2">Ⅱ</option>
+            <option value="3">Ⅲ</option>
+        </select><br>
 
         <label for="registrationClassification">Registration Classification：</label>
-        <input type="number" id="registrationClassification" required><br>
+        <select id="registrationClassification" required>
+            <option value="1">Chemical drugs 1</option>
+            <option value="2">Chemical drugs 2</option>
+            <option value="3">Chemical drugs 3</option>
+            <option value="4">Chemical drugs 4</option>
+            <option value="5">Chemical drugs 5</option>
+            <option value="6">Biologics</option>
+        </select><br>
 
-        <label for="type">Type：</label>
-        <input type="number" id="type" required><br>
+        <label for="type">Drug Type：</label>
+        <select id="type" required>
+            <option value="1">Oncologic drugs</option>
+            <option value="0">Non-tumor drugs</option>
+        </select><br>
 
         <label for="methodOfAdministration">Method of Administration：</label>
-        <input type="number" id="methodOfAdministration" required><br>
+        <select id="methodOfAdministration" required>
+            <option value="1">Oral</option>
+            <option value="2">Subcutaneous injection</option>
+            <option value="3">Intravenous infusion</option>
+            <option value="4">Local delivery</option>
+        </select><br>
 
         <label for="noOfBloodCollection">Number of Blood Collection：</label>
         <input type="number" id="noOfBloodCollection" required><br>
 
         <label for="biopsyPuncture">Biopsy/Puncture：</label>
         <select id="biopsyPuncture" required>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
         </select><br>
 
         <label for="visit">Visit：</label>
