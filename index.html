@@ -1,0 +1,82 @@
+	<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Service Fee Calculator</title>
+    <script>
+        function calculateFee() {
+            // 获取用户输入的各项数值
+            let sponser = document.getElementById('sponser').value === 'Yes' ? 1 : 0;
+            let phase = parseFloat(document.getElementById('phase').value);
+            let registrationClassification = parseFloat(document.getElementById('registrationClassification').value);
+            let type = parseFloat(document.getElementById('type').value);
+            let methodOfAdministration = parseFloat(document.getElementById('methodOfAdministration').value);
+            let noOfBloodCollection = parseFloat(document.getElementById('noOfBloodCollection').value);
+            let biopsyPuncture = document.getElementById('biopsyPuncture').value === 'Yes' ? 1 : 0;
+            let visit = parseFloat(document.getElementById('visit').value);
+            let lengthOfStay = parseFloat(document.getElementById('lengthOfStay').value);
+
+            // 系数定义
+            const a = -105365;
+            const b = 43314;
+            const c = 9620;
+            const d = -588;
+            const e = 18024;
+            const f = 6915;
+            const g = 1118;
+            const h = 13591;
+            const i = 2075;
+            const j = -3310;
+
+            // 计算研究服务费用
+            let researchServiceFee = a + b * sponser + c * phase + d * registrationClassification +
+                                     e * type + f * methodOfAdministration + g * noOfBloodCollection +
+                                     h * biopsyPuncture + i * visit + j * lengthOfStay;
+
+            // 显示预测结果
+            document.getElementById('result').innerHTML = "Research Service Fee: ¥" + researchServiceFee.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Research Service Fee Calculator</h1>
+    <form>
+        <label for="sponser">Sponsor：</label>
+        <select id="sponser" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="phase">Phase：</label>
+        <input type="number" id="phase" required><br>
+
+        <label for="registrationClassification">Registration Classification：</label>
+        <input type="number" id="registrationClassification" required><br>
+
+        <label for="type">Type：</label>
+        <input type="number" id="type" required><br>
+
+        <label for="methodOfAdministration">Method of Administration：</label>
+        <input type="number" id="methodOfAdministration" required><br>
+
+        <label for="noOfBloodCollection">Number of Blood Collection：</label>
+        <input type="number" id="noOfBloodCollection" required><br>
+
+        <label for="biopsyPuncture">Biopsy/Puncture：</label>
+        <select id="biopsyPuncture" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="visit">Visit：</label>
+        <input type="number" id="visit" required><br>
+
+        <label for="lengthOfStay">Length of Stay (days)：</label>
+        <input type="number" id="lengthOfStay" required><br>
+
+        <button type="button" onclick="calculateFee()">Calculate Fee</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>
